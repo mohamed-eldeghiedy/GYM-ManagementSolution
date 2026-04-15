@@ -39,7 +39,6 @@ namespace DAL.Data.Migrations
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     Name = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: false),
                     Email = table.Column<string>(type: "varchar(240)", maxLength: 240, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),

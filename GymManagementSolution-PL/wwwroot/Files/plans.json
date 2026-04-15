@@ -1,0 +1,34 @@
+[
+  {
+    
+    "name": "Monthly Basic",
+    "description": "Access to gym facilities with basic training programs.",
+    "durationDays": 30,
+    "price": 500,
+    "isActive": true
+  },
+  {
+    
+    "name": "Monthly Premium",
+    "description": "Includes gym access, group classes, and professional trainer support.",
+    "durationDays": 30,
+    "price": 800,
+    "isActive": true
+  },
+  {
+    
+    "name": "Quarterly Plan",
+    "description": "Three months plan with discounted price and full gym access.",
+    "durationDays": 90,
+    "price": 2100,
+    "isActive": true
+  },
+  {
+    
+    "name": "Annual Plan",
+    "description": "One year membership with full access and maximum savings.",
+    "durationDays": 365,
+    "price": 7200,
+    "isActive": true
+  }
+]

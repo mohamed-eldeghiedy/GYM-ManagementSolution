@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities.Enums
 {
-    internal enum Gender
+    public enum Gender
     {
         male=0,
         female =1

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities.Enums
 {
-    internal enum Specialties
+    public enum Specialties
     {
         GeneralFitness = 0,
         Yoga = 1,

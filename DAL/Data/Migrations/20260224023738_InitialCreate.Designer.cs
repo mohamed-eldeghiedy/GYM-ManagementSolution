@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Data.Migrations
 {
     [DbContext(typeof(GymDbContext))]
-    [Migration("20260224022615_InitialCreate")]
+    [Migration("20260224023738_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -69,7 +69,6 @@ namespace DAL.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Weight")
@@ -87,12 +86,6 @@ namespace DAL.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasColumnName("JoinDate")
-                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
@@ -117,10 +110,6 @@ namespace DAL.Data.Migrations
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnUpdateSometimes()
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("photo")
                         .IsRequired()
