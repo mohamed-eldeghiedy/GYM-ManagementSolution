@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL.Data.DataSeed
 {
-    public class GymDbContextSeed
+    internal class GymDbContextSeed
     {
     }
 }
