@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class MemberSession : BaseEntity
+    public class MemberSession : BaseEntity
     {
         public bool isAttended { get; set; }
 

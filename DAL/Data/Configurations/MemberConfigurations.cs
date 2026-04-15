@@ -17,6 +17,8 @@ namespace DAL.Data.Configurations
             builder.Property(m => m.CreatedAt)
                 .HasColumnName("JoinDate")
                 .HasDefaultValueSql("GETDATE()");
+            builder.Ignore(m=>m.CreatedAt);
+            builder.Ignore(m => m.UpdatedAt);
 
             base.Configure(builder);
         }

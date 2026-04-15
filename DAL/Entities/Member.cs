@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class Member : GymUser
+    public class Member : GymUser
     {
         public string photo { get; set; }
 
-        public HealthRecord healthRecord { get; set; }
+        public HealthRecord HealthRecord { get; set; }
 
         public ICollection<MemberShip> MemberShips { get; set; }
 

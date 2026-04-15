@@ -1,12 +1,10 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace DAL.Entities
+namespace BLL.ViewModels.MemberViewModels
 {
-    public class HealthRecord : BaseEntity
+    public class HealthRecordViewModel
     {
         public decimal Weight { get; set; }
         public decimal Height { get; set; }

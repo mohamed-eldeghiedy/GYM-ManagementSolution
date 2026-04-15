@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class MemberShip: BaseEntity
+    public class MemberShip: BaseEntity
     {
         public string Status { 
         get

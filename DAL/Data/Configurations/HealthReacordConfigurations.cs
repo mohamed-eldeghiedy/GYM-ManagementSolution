@@ -17,7 +17,7 @@ namespace DAL.Data.Configurations
                 .HasKey(h =>h.Id);
 
             builder.HasOne<Member>()
-                .WithOne(h =>h.healthRecord)
+                .WithOne(h =>h.HealthRecord)
                 .HasForeignKey<HealthRecord>(h => h.Id);
                 
         }

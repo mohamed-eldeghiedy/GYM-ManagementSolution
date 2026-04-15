@@ -1,3 +1,9 @@
+using Microsoft.Extensions.Options;
+using DAL.Data;
+using Microsoft.EntityFrameworkCore;
+using DAL.Repositories.Interfaces;
+using DAL.Repositories.Classes;
+
 namespace GymManagementSolution_PL
 {
     public class Program
@@ -8,9 +14,13 @@ namespace GymManagementSolution_PL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<GymDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("GymDbConnection")));
+            builder.Services.AddScoped(typeof(IRepository<>) , typeof(GenericRepository<>));
+            
 
             var app = builder.Build();
-
+             
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Data
 {
-    internal class GymDbContext : DbContext
+    public class GymDbContext : DbContext
     {
-        override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public GymDbContext(DbContextOptions<GymDbContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=GymDb;Trusted_Connection=True;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
