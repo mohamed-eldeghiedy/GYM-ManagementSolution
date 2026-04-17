@@ -21,7 +21,7 @@ namespace BLL.Classes
         }
         public IEnumerable<SessionViewModel> GetAllSessions()
         {
-            var session = _unitOfWork.GetRepository<Session>().GetAll;
+            var session = _unitOfWork.GetRepository<Session>().GetAll();
             if (session is null || !session.Any())
                 return [];
             return _mapper.Map<IEnumerable<SessionViewModel>>(session);

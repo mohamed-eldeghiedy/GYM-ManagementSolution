@@ -3,6 +3,7 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using DAL.Repositories.Interfaces;
 using DAL.Repositories.Classes;
+using DAL.Data.DataSeed;
 
 namespace GymManagementSolution_PL
 {
@@ -20,7 +21,14 @@ namespace GymManagementSolution_PL
             
 
             var app = builder.Build();
-             
+
+            using var scope = app.Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<GymDbContext>();
+            var pendingMigrations = dbContext.Database.GetPendingMigrations();
+            if (pendingMigrations.Any())dbContext.Database.Migrate();
+            GymDbContextSeed.SeedData(dbContext);
+
+
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
