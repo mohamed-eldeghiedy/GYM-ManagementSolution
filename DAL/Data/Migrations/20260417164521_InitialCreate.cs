@@ -45,6 +45,7 @@ namespace DAL.Data.Migrations
                     Phone = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
+                    Address_BuildingNumber = table.Column<int>(type: "int", nullable: false),
                     Street = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     City = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     Address_State = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -65,7 +66,7 @@ namespace DAL.Data.Migrations
                     Name = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "varchar(240)", maxLength: 240, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
-                    DurationInDays = table.Column<int>(type: "int", nullable: false),
+                    DurationDays = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -73,7 +74,7 @@ namespace DAL.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Plans", x => x.Id);
-                    table.CheckConstraint("PlanDurationCheck", "DurationDays Between1 to 365");
+                    table.CheckConstraint("PlanDurationCheck", "DurationDays Between 1 and 365");
                 });
 
             migrationBuilder.CreateTable(
@@ -90,6 +91,7 @@ namespace DAL.Data.Migrations
                     Phone = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
+                    Address_BuildingNumber = table.Column<int>(type: "int", nullable: false),
                     Street = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     City = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     Address_State = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -146,7 +148,7 @@ namespace DAL.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sessions", x => x.Id);
-                    table.CheckConstraint("SessionCapacityCheck", "Capacity Between 1 to 25");
+                    table.CheckConstraint("SessionCapacityCheck", "Capacity Between 1 and 25");
                     table.CheckConstraint("SessionEndDateCheck", "EndDate > StartDate");
                     table.ForeignKey(
                         name: "FK_Sessions_Categories_CategoryId",

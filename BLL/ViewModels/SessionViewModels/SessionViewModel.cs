@@ -17,7 +17,23 @@ namespace BLL.ViewModels.SessionViewModels
         public string Description { get; set; } = string.Empty;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public string Duration { get; set; } = string.Empty;
+        public string DateDisplay => $"{StartDate:MMM dd, yyyy} ";
+        public string TimeDisplay => $"{StartDate:hh:mm tt} - {EndDate:hh:mm tt}";
+        public TimeSpan Duration => EndDate - StartDate;
+
+
+        public string Status
+        {
+            get
+            {
+                if (DateTime.Now < StartDate)
+                    return "Upcoming";
+                else if (DateTime.Now >= StartDate && DateTime.Now <= EndDate)
+                    return "Ongoing";
+                else
+                    return "Completed";
+            }
+        }
 
     }
 }

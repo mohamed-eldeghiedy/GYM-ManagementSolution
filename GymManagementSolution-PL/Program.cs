@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using DAL.Repositories.Interfaces;
 using DAL.Repositories.Classes;
 using DAL.Data.DataSeed;
+using BLL;
+using BLL.Interfaces;
+using BLL.Classes;
 
 namespace GymManagementSolution_PL
 {
@@ -17,8 +20,12 @@ namespace GymManagementSolution_PL
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<GymDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("GymDbConnection")));
-            builder.Services.AddScoped(typeof(IRepository<>) , typeof(GenericRepository<>));
-            
+            //builder.Services.AddScoped(typeof(IRepository<>) , typeof(GenericRepository<>));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<ISessionRepository, SessionRepository>();
+            builder.Services.AddScoped<IAnalyticsService , AnalyticsService>();
+            builder.Services.AddAutoMapper(x=>x.AddProfile(new MappingProfiles()));
+
 
             var app = builder.Build();
 
