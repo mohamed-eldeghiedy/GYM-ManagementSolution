@@ -18,7 +18,7 @@ namespace DAL.Data.Configurations
             builder.Property(p => p.Price).HasPrecision(10, 2);
             builder.ToTable(tb =>
             {
-                tb.HasCheckConstraint("PlanDurationCheck", "DurationDays Between1 to 365");
+                tb.HasCheckConstraint("PlanDurationCheck", "DurationDays Between 1 and 365");
 
             });
         }

@@ -8,7 +8,7 @@ namespace DAL.Entities
 {
     public class Member : GymUser
     {
-        public string photo { get; set; }
+        public string? photo { get; set; }
 
         public HealthRecord HealthRecord { get; set; }
 

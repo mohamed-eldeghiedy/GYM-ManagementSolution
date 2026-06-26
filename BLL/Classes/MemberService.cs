@@ -81,10 +81,13 @@ namespace BLL.Classes
         }
 
         public bool UpdateMemberDetails(int memberid, MemberToUpdateViewModel memberToUpdatemodel)
-        {
-            var isEmailExists = _unitOfWork.GetRepository<Member>().GetAll().Any(m => m.Email == memberToUpdatemodel.Email);
-            var isPhoneExists = _unitOfWork.GetRepository<Member>().GetAll().Any(m => m.Phone == memberToUpdatemodel.Phone);
-            if (isEmailExists || isPhoneExists) return false;
+        {  
+            var emailExist = _unitOfWork.GetRepository<Member>()
+                .GetAll(m => m.Email == memberToUpdatemodel.Email && m.Id != memberid).Any();
+
+            var phoneExist = _unitOfWork.GetRepository<Member>()
+                .GetAll(m => m.Phone == memberToUpdatemodel.Phone && m.Id != memberid).Any();
+            if (emailExist || phoneExist) return false;
 
             var member = _unitOfWork.GetRepository<Member>().GetById(memberid);
             if (member is null) return false;

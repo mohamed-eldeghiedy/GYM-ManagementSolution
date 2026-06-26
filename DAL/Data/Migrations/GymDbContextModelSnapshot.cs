@@ -17,7 +17,7 @@ namespace DAL.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.3")
+                .HasAnnotation("ProductVersion", "10.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -101,7 +101,6 @@ namespace DAL.Data.Migrations
                         .HasColumnType("varchar");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
@@ -109,7 +108,6 @@ namespace DAL.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("photo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -198,7 +196,7 @@ namespace DAL.Data.Migrations
                         .HasMaxLength(240)
                         .HasColumnType("varchar");
 
-                    b.Property<int>("DurationInDays")
+                    b.Property<int>("DurationDays")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
@@ -220,7 +218,7 @@ namespace DAL.Data.Migrations
 
                     b.ToTable("Plans", t =>
                         {
-                            t.HasCheckConstraint("PlanDurationCheck", "DurationDays Between1 to 365");
+                            t.HasCheckConstraint("PlanDurationCheck", "DurationDays Between 1 and 365");
                         });
                 });
 
@@ -265,7 +263,7 @@ namespace DAL.Data.Migrations
 
                     b.ToTable("Sessions", t =>
                         {
-                            t.HasCheckConstraint("SessionCapacityCheck", "Capacity Between 1 to 25");
+                            t.HasCheckConstraint("SessionCapacityCheck", "Capacity Between 1 and 25");
 
                             t.HasCheckConstraint("SessionEndDateCheck", "EndDate > StartDate");
                         });
@@ -302,7 +300,6 @@ namespace DAL.Data.Migrations
                         .HasColumnType("varchar");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
@@ -333,7 +330,7 @@ namespace DAL.Data.Migrations
             modelBuilder.Entity("DAL.Entities.HealthRecord", b =>
                 {
                     b.HasOne("DAL.Entities.Member", null)
-                        .WithOne("healthRecord")
+                        .WithOne("HealthRecord")
                         .HasForeignKey("DAL.Entities.HealthRecord", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -346,6 +343,9 @@ namespace DAL.Data.Migrations
                             b1.Property<int>("MemberId")
                                 .HasColumnType("int");
 
+                            b1.Property<int>("BuildingNumber")
+                                .HasColumnType("int");
+
                             b1.Property<string>("City")
                                 .IsRequired()
                                 .HasMaxLength(120)
@@ -353,7 +353,6 @@ namespace DAL.Data.Migrations
                                 .HasColumnName("City");
 
                             b1.Property<string>("State")
-                                .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Street")
@@ -438,6 +437,9 @@ namespace DAL.Data.Migrations
                             b1.Property<int>("TrainerId")
                                 .HasColumnType("int");
 
+                            b1.Property<int>("BuildingNumber")
+                                .HasColumnType("int");
+
                             b1.Property<string>("City")
                                 .IsRequired()
                                 .HasMaxLength(120)
@@ -445,7 +447,6 @@ namespace DAL.Data.Migrations
                                 .HasColumnName("City");
 
                             b1.Property<string>("State")
-                                .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Street")
@@ -473,12 +474,12 @@ namespace DAL.Data.Migrations
 
             modelBuilder.Entity("DAL.Entities.Member", b =>
                 {
+                    b.Navigation("HealthRecord")
+                        .IsRequired();
+
                     b.Navigation("MemberSessions");
 
                     b.Navigation("MemberShips");
-
-                    b.Navigation("healthRecord")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("DAL.Entities.Plan", b =>

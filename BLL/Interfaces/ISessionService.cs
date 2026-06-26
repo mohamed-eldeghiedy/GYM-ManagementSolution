@@ -9,8 +9,8 @@ namespace BLL.Interfaces
     {
         IEnumerable<SessionViewModel> GetAllSessions();
         SessionViewModel? GetSessionDetails(int sessionId);
-        UpdateSessionViewModel? GetSessionToUpdate(int sessionId);
-        bool CreateSession(UpdateSessionViewModel model);
+        bool CreateSession(CreateSessionViewModel session);
+        UpdateSessionViewModel? GetSessionToUpdate(int sessionId);        
         bool UpdateSession(int sessionId, UpdateSessionViewModel model);
         bool DeleteSession(int sessionId);
     }
