@@ -20,9 +20,10 @@ namespace GymManagementSolution_PL
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<GymDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("GymDbConnection")));
-            //builder.Services.AddScoped(typeof(IRepository<>) , typeof(GenericRepository<>));
+            //builder.Services.AddScoped(typeof(IRepository<>) , typeof(GenericRepository<>)); 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<ISessionRepository, SessionRepository>();
+            builder.Services.AddScoped<IMemberService , MemberService>();
             builder.Services.AddScoped<IAnalyticsService , AnalyticsService>();
             builder.Services.AddAutoMapper(x=>x.AddProfile(new MappingProfiles()));
 

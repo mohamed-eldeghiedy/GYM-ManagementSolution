@@ -32,7 +32,7 @@ namespace BLL.ViewModels.MemberViewModels
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Health record is required")]
+
         public HealthRecordViewModel HealthRecord { get; set; } = null!;
 
         [Required(ErrorMessage = "Building number is required")]
@@ -48,5 +48,6 @@ namespace BLL.ViewModels.MemberViewModels
         [StringLength(100, MinimumLength = 2, ErrorMessage = "City must be between 2 and 100 characters")]
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "City can only contain letters and spaces")]
         public string City { get; set; } = null!;
+
     }
 }

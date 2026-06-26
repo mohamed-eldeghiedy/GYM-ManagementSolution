@@ -10,9 +10,10 @@ namespace DAL.Data.DataSeed
     {
         public static bool SeedData(GymDbContext context)
         {
+            
             var HasPlans = context.Plans.Any();
             var HasCategories = context.Categories.Any();
-            if (HasCategories&&HasPlans) return false;
+            if(HasPlans&&HasCategories)return false;
             if (!HasPlans)
             {
                 var plans= LoadDataFromJsonFile<Plan>("plans.json");
@@ -24,6 +25,7 @@ namespace DAL.Data.DataSeed
                 var categories = LoadDataFromJsonFile<Category>("categories.json");
                 if(categories.Any())
                     context.Categories.AddRange(categories);
+             
             }
             context.SaveChanges();
             return true;

@@ -15,7 +15,7 @@ namespace DAL.Data.Configurations
         {
             builder.ToTable(tb =>
             {
-                tb.HasCheckConstraint("SessionCapacityCheck", "Capacity Between 1 to 25");
+                tb.HasCheckConstraint("SessionCapacityCheck", "Capacity Between 1 and 25");
                 tb.HasCheckConstraint("SessionEndDateCheck", "EndDate > StartDate");
             });
 

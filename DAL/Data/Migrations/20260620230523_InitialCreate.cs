@@ -32,7 +32,7 @@ namespace DAL.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Height = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     BloodType = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -41,14 +41,14 @@ namespace DAL.Data.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Name = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: false),
                     Email = table.Column<string>(type: "varchar(240)", maxLength: 240, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     Address_BuildingNumber = table.Column<int>(type: "int", nullable: false),
                     Street = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     City = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
-                    Address_State = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Address_State = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -87,14 +87,14 @@ namespace DAL.Data.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Name = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: false),
                     Email = table.Column<string>(type: "varchar(240)", maxLength: 240, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     Address_BuildingNumber = table.Column<int>(type: "int", nullable: false),
                     Street = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     City = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
-                    Address_State = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Address_State = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
